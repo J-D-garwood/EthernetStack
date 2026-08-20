@@ -16,5 +16,8 @@ Continued to review key params required....
 - **IP address**: To be chosen at bring-up, not assigned by anything. The board and my laptop will be the only two devices on a direct cable, so I pick a private subnet, give the laptop's Ethernet adapter a manual address on it, and give the board a different host address on the same subnet.
 - **Toolchain**: Vivado (Questa for simulation)
 
-## 19/08/2026
-Read PHY schematic..
+## 20/08/2026
+Read PHY schematic pgs 0-15
+
+## 20/08/2026
+Read PHY schematic pgs 15-...
