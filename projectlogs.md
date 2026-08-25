@@ -22,3 +22,6 @@ Read PHY schematic pgs 0-15
 ## 24/08/2026
 Read PHY schematic pgs 15-20
 
+## 25/08/2026
+Continue reading phy schematic
+
