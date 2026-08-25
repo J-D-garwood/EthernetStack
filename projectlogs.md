@@ -20,8 +20,11 @@ Continued to review key params required....
 Read PHY schematic pgs 0-15
 
 ## 24/08/2026
-Read PHY schematic pgs 15-20
+Skimmed PHY schematic pgs 15-60
 
 ## 25/08/2026
-Continue reading phy schematic
+Adding basic PHY resetting logic
+PHY_reset.v 
+
+## 26/08/2026
 
