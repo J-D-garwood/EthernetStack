@@ -18,9 +18,7 @@ always @(posedge clk) begin
         if (counter < (RESET_S*CLK_HZ)) begin
             counter <= counter + 1'b1;
         end else begin 
-            if (counter == 32'h0000_FFFF) begin
-                PHY_rst_n <= 1'b1;
-            end
+            PHY_rst_n <= 1'b1;
         end
     end
 end
