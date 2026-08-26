@@ -27,4 +27,9 @@ Adding basic PHY resetting logic
 PHY_reset.v 
 
 ## 26/08/2026
+- Reviewed RGMII interface, MDIO sub interface, and UART
+- Built out PHY_init.v module w. 20ms reset and assert length (10ms specified on PHY datasheet, 20ms selected for margin of safety). 
+
+## 27/08/2026
+- TBC - Wrote the MDIO master. Two wires, MDC and MDIO. 
 
