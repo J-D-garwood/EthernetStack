@@ -31,5 +31,10 @@ PHY_reset.v
 - Built out PHY_init.v module w. 20ms reset and assert length (10ms specified on PHY datasheet, 20ms selected for margin of safety). 
 
 ## 27/08/2026
-- TBC - Wrote the MDIO master. Two wires, MDC and MDIO. 
+- Drafted **MDC generator**
+- Started work on the **MDIO master**. Two wires, MDC and MDIO. 
+- Important Figures from PHY datasheet:
+![alt text](misc%20resources%20and%20images/PHY_register_table.png)
+
+
 
