@@ -36,5 +36,13 @@ PHY_reset.v
 - Important Figures from PHY datasheet:
 ![alt text](misc%20resources%20and%20images/PHY_register_table.png)
 
+## 30/08/2026
+- Tested MDC generator w. MDC_tb.v
+- Added makefile for quick testing using verilator
 
+## 31/08/2026
+- Wrote preliminary MDIO.v + MDIO_tb for it
+- Tested using questa sim
 
+## 01/09/2026
+- Add two-way MDIO reading!!

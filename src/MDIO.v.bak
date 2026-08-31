@@ -1,0 +1,34 @@
+module MDIO #()(
+    input rst_n,
+    input clk,
+    input MDC,
+    output reg MDIO,
+    input [1:0] op,
+    input [4:0] PHY_ad,
+    input [4:0] reg_ad,
+    input [15:0] data
+);
+
+reg MDC_d;
+reg [31:0] ins; 
+reg ready;
+reg [4:0] counter;
+
+always @(posedge clk) begin
+	if (!rst_n) begin
+		MDIO <= 1'b1;
+		MDC_d <= 1'b0;
+		ins <= {op, PHY_ad, reg_ad, 2'b10, data}
+	end else begin 
+		MDC_d <= MDC;
+		if ((MDC_d == 1'b1) && (MDC == 1'b0)) begin
+			MDIO <= ins[counter];
+			counter <= counter + 1'b1;
+		end
+		if (counter == 32) begin
+			counter <= 0;
+		end
+	end
+end
+    
+endmodule

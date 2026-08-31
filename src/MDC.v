@@ -1,4 +1,4 @@
-module MDC_generator #(
+module MDC #(
     parameter CLK_HZ = 25000000, // Default reset, assert of 20ms
     parameter MDC_HZ = 2500000
 
@@ -10,7 +10,7 @@ module MDC_generator #(
 
 reg [3:0] counter;
 
-always @(posedge clk) begin
+always @(negedge clk) begin
     if (!rst_n) begin
         MDC <= 1'b0;
         counter <= 0;
