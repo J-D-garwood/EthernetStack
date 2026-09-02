@@ -1,27 +1,30 @@
+// Enable logic needs work
 module MDIO #()(
     input rst_n,
 	input en,
     input clk,
     input MDC,
-    output MDIO,
+	input MDIO_i,
+    output MDIO_o,
 	output busy,
+	output [15:0] data_out,
     input [1:0] op,
     input [4:0] PHY_ad,
     input [4:0] reg_ad,
-    input [15:0] data
+    input [15:0] data_in
 );
 
 reg MDC_d;
 reg [63:0] ins; 
 reg [7:0] counter;
 reg shift;
-assign MDIO = ins[63];
+assign MDIO_o = ins[63];
 assign busy = shift;
 
 always @(posedge clk) begin
 	if (!rst_n) begin
 		MDC_d <= 1'b0;
-		ins <= {~(32'b0), 2'b01, op, PHY_ad, reg_ad, 2'b10, data};
+		ins <= {~(32'b0), 2'b01, op, PHY_ad, reg_ad, 2'b10, data_in};
 		counter <= 0;
 		shift <= 1'b0;
 	end else begin 
@@ -32,11 +35,11 @@ always @(posedge clk) begin
 				counter <= counter + 1'b1;
 			end else begin
 				if (en) begin
-					ins <= {~(32'b0), 2'b01, op, PHY_ad, reg_ad, 2'b10, data};
+					ins <= {~(32'b0), 2'b01, op, PHY_ad, reg_ad, 2'b10, data_in};
+					shift <= 1'b1;
 				end else begin
 					ins <= ~(64'b0);
 				end
-				shift <= 1'b1;
 			end
 			if (counter == 63) begin
 				shift <= 1'b0;

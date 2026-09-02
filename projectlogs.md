@@ -45,4 +45,5 @@ PHY_reset.v
 - Tested using questa sim
 
 ## 01/09/2026
-- Add two-way MDIO reading!!
+- Started work on allowing MAC to read the PHY status register
+- (This one - BMSR: page 0x00, register 0x01 - See PHY datasheet)
