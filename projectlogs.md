@@ -44,6 +44,13 @@ PHY_reset.v
 - Wrote preliminary MDIO.v + MDIO_tb for it
 - Tested using questa sim
 
-## 01/09/2026
+## 02/09/2026
 - Started work on allowing MAC to read the PHY status register
 - (This one - BMSR: page 0x00, register 0x01 - See PHY datasheet)
+
+## 03/09/2026
+- (Dated)--> Determined to keep enable logic in MDIO_master as opposed to MDIO to prevent me from having to redesign MDIO in future iterations
+- ^ Changed my mind on this as this would ultimately just be putting a wrapper around a tristate buffer
+- Moved over to FSM structure for clarity --> was using counter for too many things
+
+## 04/09/2026

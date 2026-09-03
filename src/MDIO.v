@@ -1,52 +1,67 @@
-// Enable logic needs work
+// 2nd iteration
 module MDIO #()(
+	input init,
     input rst_n,
-	input en,
     input clk,
     input MDC,
-	input MDIO_i,
-    output MDIO_o,
-	output busy,
-	output [15:0] data_out,
-    input [1:0] op,
-    input [4:0] PHY_ad,
-    input [4:0] reg_ad,
-    input [15:0] data_in
+	input [31:0] transmitting,
+	inout MDIO,
+	output done
+	output reg [15:0] received
 );
-
+//
 reg MDC_d;
-reg [63:0] ins; 
-reg [7:0] counter;
-reg shift;
-assign MDIO_o = ins[63];
-assign busy = shift;
+//
+reg en = 0;
+wire transmit;
+wire receive;
 
+reg [7:0] counter;
+
+reg [63:0] ins;
+assign transmit = ins[63];
+//reg read;
+
+//STATES 
+reg [5:0] state;
+
+localparam IDLE = 0;
+localparam PREAMBLE = 1;
+localparam HEADER = 2;
+localparam TURNAROUND = 3;
+localparam DATA = 4;
+localparam DONE = 5;
+
+
+tristate tristate(
+	.drive(en),
+	.transmit(transmit),
+	.receive(receive),
+	.pin(MDIO)
+);
+//
 always @(posedge clk) begin
 	if (!rst_n) begin
-		MDC_d <= 1'b0;
-		ins <= {~(32'b0), 2'b01, op, PHY_ad, reg_ad, 2'b10, data_in};
+		state <= 1 << IDLE;
+//		received <= 16'hFFFF;
 		counter <= 0;
-		shift <= 1'b0;
-	end else begin 
+//		read <= 1;
+	end else begin
 		MDC_d <= MDC;
+		// USE case (state) as opposed to chain of ifs
+		//counter needs to be reset
 		if ((MDC_d == 1'b1) && (MDC == 1'b0)) begin
-			if (shift) begin
-				ins <= {ins[62:0], 1'b1};
-				counter <= counter + 1'b1;
-			end else begin
-				if (en) begin
-					ins <= {~(32'b0), 2'b01, op, PHY_ad, reg_ad, 2'b10, data_in};
-					shift <= 1'b1;
-				end else begin
-					ins <= ~(64'b0);
-				end
+			if (init && state == (1 << IDLE)) begin
+				state <= 1 << PREAMBLE;
+				en <= 1;
 			end
-			if (counter == 63) begin
-				shift <= 1'b0;
-				counter <= 0;
+			if (state == (1 << PREAMBLE)) begin
+				ins <= 64'hFFFF_FFFF_FFFF_FFFF;
+				if (counter<32) begin
+					counter <= counter + 1;
+				end
 			end
 		end
 	end
 end
-    
 endmodule
