@@ -54,3 +54,7 @@ PHY_reset.v
 - Moved over to FSM structure for clarity --> was using counter for too many things
 
 ## 04/09/2026
+- Fleshed out FSM, finished read-only MDIO design
+
+## 05/09/2026
+- Add Syncs to MDIO - Figure out why and where they are needed at a granular level!!
