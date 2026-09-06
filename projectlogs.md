@@ -56,5 +56,12 @@ PHY_reset.v
 ## 04/09/2026
 - Fleshed out FSM, finished read-only MDIO design
 
-## 05/09/2026
-- Add Syncs to MDIO - Figure out why and where they are needed at a granular level!!
+## 06/09/2026
+- **Still need to add Syncs to MDIO**
+- Completed MDIO Master for read status regs only
+- Added top.v
+- Recognised issue - board clk is 200 MHz, need 25 MHz for circuit to operate as intended. - Use Vivado tools
+
+
+
+

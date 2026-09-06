@@ -22,6 +22,7 @@ reg [7:0] counter;
 
 reg [63:0] ins;
 assign transmit = ins[63];
+reg [15:0] buffer; 
 
 //STATES 
 reg [5:0] state;
@@ -45,6 +46,7 @@ always @(posedge clk) begin
 	if (!rst_n) begin
 		state <= 1 << IDLE;
 		received <= 16'hFFFF;
+		buffer <= 16'hFFFF;
 		counter <= 0;
  		done <= 0;
 		busy <= 0;
@@ -97,7 +99,7 @@ always @(posedge clk) begin
 					end
 				end
 				(1 << DATA): begin
-					received <= {received[14:0], receive};
+					buffer <= {buffer[14:0], receive};
 					if (counter == 15) begin
 						state <= 1 << DONE;
 						counter <= 0;
@@ -108,6 +110,7 @@ always @(posedge clk) begin
 					end
 				end 
 				(1 << DONE): begin 
+					received <= buffer;
 					done <= 0;
 					counter <= 0;
 					state <= 1 << IDLE;
