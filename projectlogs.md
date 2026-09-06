@@ -62,6 +62,11 @@ PHY_reset.v
 - Added top.v
 - Recognised issue - board clk is 200 MHz, need 25 MHz for circuit to operate as intended. - Use Vivado tools
 
+## 07/09/2026
+- Determined to use PLL over MMCM as integer division is all that's needed.
+- Tested Vivado CLocking Wizard - adapted to AMD part
+![alt text](image.png)
+
 
 
 
