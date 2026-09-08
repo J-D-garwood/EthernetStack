@@ -8,20 +8,23 @@ module top (
     input  rst_n,
     inout MDIO,
     output MDC,
-    output PHY_rst_n,
-    output PHY_init_complete
+    output PHY_rst_n
 );
     wire clk;
     wire locked;
-    wire rst_internal;
-    assign rst_internal = (rst_n && locked); // reset finished and clock confirmed at 25 MHz
+    wire PHY_init_complete;
 
+    wire rst_n_phy;
+    assign rst_n_phy = (rst_n && locked); // reset finished and clock confirmed at 25 MHz
+
+    wire rst_n_mdio;
+    assign rst_n_mdio = (rst_n_phy && PHY_init_complete);
 // Differential clk to single wire - WILL BE REMOVED AFTER PLL ADDED
 //    IBUFDS #(.IOSTANDARD("DIFF_SSTL15")) u_clk_buf (
 //        .I (sys_clk_p), .IB (sys_clk_n), .O (clk)
 //    );
 
-      clk_wiz_0 instance_name
+      clk_wiz_0 clk_wiz
        (
         // Clock out ports
         .clk_out1(clk),     // output clk_out1
@@ -36,14 +39,14 @@ module top (
 // PHY INIT SHOULD ALWAY PRECEDE MDIO HANDSHAKE!! --> Fix this next time
     PHY_INIT #() phy_init(
         .clk(clk),
-        .rst_n(rst_internal),
-        .PHY_INIT_n(PHY_rst_n),
+        .rst_n(rst_n_phy),
+        .PHY_rst_n(PHY_rst_n),
         .init_complete(PHY_init_complete)
     );
 
     MDIO_master #() MDIO_master(
         .clk(clk),
-        .rst_n(rst_internal),
+        .rst_n(rst_n_mdio),
         .MDIO(MDIO),
         .MDC(MDC)
     );

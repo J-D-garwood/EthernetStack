@@ -57,7 +57,6 @@ PHY_reset.v
 - Fleshed out FSM, finished read-only MDIO design
 
 ## 06/09/2026
-- **Still need to add Syncs to MDIO**
 - Completed MDIO Master for read status regs only
 - Added top.v
 - Recognised issue - board clk is 200 MHz, need 25 MHz for circuit to operate as intended. - Use Vivado tools
@@ -69,6 +68,9 @@ PHY_reset.v
 
 ## 07/09/2026 - 2
 - Used Vivado clocking wizard to create pll which divides native clock of 200 MHz down to 25 MHz.
+
+## 09/09/2026
+- **Add Syncs to MDIO**
 
 
 
