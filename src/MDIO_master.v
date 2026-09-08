@@ -1,5 +1,5 @@
 // Currently working on just reading the PHY status register every 1 s and outputting that to UART
-
+// Add synchronous release of rst NEXT!!
 
 module MDIO_master #(
     parameter CLK_HZ = 25000000, // Default reset, assert of 20ms

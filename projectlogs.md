@@ -70,7 +70,8 @@ PHY_reset.v
 - Used Vivado clocking wizard to create pll which divides native clock of 200 MHz down to 25 MHz.
 
 ## 09/09/2026
-- **Add Syncs to MDIO**
+- Added reset chaining. PLL locked --> PHY init --> MDIO init
+- Added Syncs to MDIO input - as PHY clock is separate this reduces risks of metastability
 
 
 

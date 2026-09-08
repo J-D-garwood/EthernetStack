@@ -16,7 +16,9 @@ reg MDC_d;
 //
 reg en;
 wire transmit;
+wire receive_async;
 wire receive;
+
 
 reg [7:0] counter;
 
@@ -38,10 +40,17 @@ localparam DONE = 5;
 tristate tristate(
 	.drive(en),
 	.transmit(transmit),
-	.receive(receive),
+	.receive(receive_async),
 	.pin(MDIO)
 );
-//
+
+synchroniser receive_sync(
+	.clk(clk),
+	.rst_n(rst_n),
+	.async_in(receive_async),
+	.sync_out(receive)
+);
+
 always @(posedge clk) begin
 	if (!rst_n) begin
 		state <= 1 << IDLE;
