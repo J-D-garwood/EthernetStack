@@ -73,5 +73,9 @@ PHY_reset.v
 - Added reset chaining. PLL locked --> PHY init --> MDIO init
 - Added Syncs to MDIO input - as PHY clock is separate this reduces risks of metastability
 
+## 11/09/2026
+- drafted first constraints file.
+- added ila debugging
+- ran synthesis and implementation in Vivado
 
 

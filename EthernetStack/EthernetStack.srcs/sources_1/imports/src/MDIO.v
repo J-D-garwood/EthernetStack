@@ -15,9 +15,9 @@ module MDIO #()(
 reg MDC_d;
 //
 reg en;
-(* MARK_DEBUG = "TRUE" *) wire transmit;
-(* MARK_DEBUG = "TRUE" *) wire receive_async;
-(* MARK_DEBUG = "TRUE" *) wire receive;
+wire transmit;
+wire receive_async;
+wire receive;
 
 
 reg [7:0] counter;
