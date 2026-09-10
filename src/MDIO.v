@@ -100,7 +100,7 @@ always @(posedge clk) begin
 					end
 				end 
 				(1 << TURNAROUND): begin
-					if (counter == 1) begin
+					if (counter == 0) begin // Turnaround time is now 1 clk cycle
 						state <= 1 << DATA;
 						counter <= 0;
 					end else begin

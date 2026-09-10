@@ -69,13 +69,20 @@ PHY_reset.v
 ## 07/09/2026 - 2
 - Used Vivado clocking wizard to create pll which divides native clock of 200 MHz down to 25 MHz.
 
-## 09/09/2026
+## 09/09/2026 - 1
 - Added reset chaining. PLL locked --> PHY init --> MDIO init
 - Added Syncs to MDIO input - as PHY clock is separate this reduces risks of metastability
 
-## 11/09/2026
+## 09/09/2026 - 2
 - drafted first constraints file.
 - added ila debugging
 - ran synthesis and implementation in Vivado
 
-
+## 10/09/2026
+- Generated bitstream
+- Programmed board
+- identified that MDIO read data is delayed 1 bit
+![alt text](image-1.png)
+- i.e. 0x7949 << 1, with a 1 shifted in  =  0xF293
+- Reduced turnaround time by one clock cycle, issue resolved.
+![alt text](image-2.png)

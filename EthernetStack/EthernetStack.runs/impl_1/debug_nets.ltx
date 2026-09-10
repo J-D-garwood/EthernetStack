@@ -1,0 +1,398 @@
+{
+    "ltx_root": {
+        "version": 4,
+        "minor": 0,
+        "ltx_data": [
+            {
+                "name": "EDA_PROBESET",
+                "active": true,
+                "debug_cores": [
+                    {
+                        "type": "XSDB_V3",
+                        "name": "dbg_hub",
+                        "spec": "labtools_xsdbm_v3",
+                        "clk_input_freq_hz": "25000000"
+                    },
+                    {
+                        "type": "ILA_V3",
+                        "name": "u_ila_0",
+                        "spec": "labtools_ila_v6",
+                        "core_location": {
+                            "user_chain": 1,
+                            "slave_index": 0,
+                            "bscan_switch_index": 0
+                        },
+                        "uuid": "23E7D65A79BC59F7BC47406C1714DFAE",
+                        "pins": [
+                            {
+                                "name": "probe0",
+                                "id": 0,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 5,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "MDIO_master/mdio/state",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "MDIO_master/mdio/state[5]",
+                                                "parentNetId": 0
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[4]",
+                                                "parentNetId": 1
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[3]",
+                                                "parentNetId": 2
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[2]",
+                                                "parentNetId": 3
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[1]",
+                                                "parentNetId": 4
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[0]",
+                                                "parentNetId": 5
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe1",
+                                "id": 1,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 15,
+                                "portIndex": 1,
+                                "nets": [
+                                    {
+                                        "name": "MDIO_master/mdio/received",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "MDIO_master/mdio/received[15]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[14]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[13]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[12]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[11]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[10]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[9]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[8]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[7]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[6]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[5]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[4]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[3]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[2]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[1]"
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/received[0]"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe2",
+                                "id": 2,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 2,
+                                "nets": [
+                                    {
+                                        "name": "MDIO_master/mdio/done",
+                                        "isBus": false
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "ILA_V3",
+                        "name": "u_ila_1",
+                        "spec": "labtools_ila_v6",
+                        "core_location": {
+                            "user_chain": 1,
+                            "slave_index": 1,
+                            "bscan_switch_index": 0
+                        },
+                        "uuid": "3B505A030738513C98471D25F5B1F848",
+                        "pins": [
+                            {
+                                "name": "probe0",
+                                "id": 3,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 0,
+                                "nets": [
+                                    {
+                                        "name": "locked",
+                                        "isBus": false
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "parent_nets": [
+                    {
+                        "id": 0,
+                        "name": "MDIO_master/mdio/state[5]",
+                        "state_reg": [
+                            {
+                                "name": "MDIO_master/mdio/state_reg[5]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000001"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "000010"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "000100"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "001000"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "010000"
+                                    },
+                                    {
+                                        "name": "iSTATE4",
+                                        "val": "100000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 1,
+                        "name": "MDIO_master/mdio/state[4]",
+                        "state_reg": [
+                            {
+                                "name": "MDIO_master/mdio/state_reg[4]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000001"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "000010"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "000100"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "001000"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "010000"
+                                    },
+                                    {
+                                        "name": "iSTATE4",
+                                        "val": "100000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "name": "MDIO_master/mdio/state[3]",
+                        "state_reg": [
+                            {
+                                "name": "MDIO_master/mdio/state_reg[3]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000001"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "000010"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "000100"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "001000"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "010000"
+                                    },
+                                    {
+                                        "name": "iSTATE4",
+                                        "val": "100000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "name": "MDIO_master/mdio/state[2]",
+                        "state_reg": [
+                            {
+                                "name": "MDIO_master/mdio/state_reg[2]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000001"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "000010"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "000100"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "001000"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "010000"
+                                    },
+                                    {
+                                        "name": "iSTATE4",
+                                        "val": "100000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "name": "MDIO_master/mdio/state[1]",
+                        "state_reg": [
+                            {
+                                "name": "MDIO_master/mdio/state_reg[1]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000001"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "000010"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "000100"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "001000"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "010000"
+                                    },
+                                    {
+                                        "name": "iSTATE4",
+                                        "val": "100000"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": 5,
+                        "name": "MDIO_master/mdio/state[0]",
+                        "state_reg": [
+                            {
+                                "name": "MDIO_master/mdio/state_reg[0]",
+                                "states": [
+                                    {
+                                        "name": "iSTATE",
+                                        "val": "000001"
+                                    },
+                                    {
+                                        "name": "iSTATE0",
+                                        "val": "000010"
+                                    },
+                                    {
+                                        "name": "iSTATE1",
+                                        "val": "000100"
+                                    },
+                                    {
+                                        "name": "iSTATE2",
+                                        "val": "001000"
+                                    },
+                                    {
+                                        "name": "iSTATE3",
+                                        "val": "010000"
+                                    },
+                                    {
+                                        "name": "iSTATE4",
+                                        "val": "100000"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

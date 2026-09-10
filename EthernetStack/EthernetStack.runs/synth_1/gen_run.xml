@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tfgg484-2" LaunchTime="1788986962" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a35tfgg484-2" LaunchTime="1789051029" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/top.dcp">
   <File Type="PA-TCL" Name="top.tcl"/>
   <File Type="REPORTS-TCL" Name="top_reports.tcl"/>
   <File Type="RDS-RDS" Name="top.vds"/>
@@ -23,7 +23,7 @@
     <File Path="$PSRCDIR/sources_1/imports/src/MDIO.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../src/MDIO.v"/>
-        <Attr Name="ImportTime" Val="1788985309"/>
+        <Attr Name="ImportTime" Val="1789051010"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -91,6 +91,7 @@
       </FileInfo>
     </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/constraints/constraints.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>

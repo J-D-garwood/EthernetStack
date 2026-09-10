@@ -15,9 +15,9 @@ module MDIO #()(
 reg MDC_d;
 //
 reg en;
-wire transmit;
-wire receive_async;
-wire receive;
+(* MARK_DEBUG = "TRUE" *) wire transmit;
+(* MARK_DEBUG = "TRUE" *) wire receive_async;
+(* MARK_DEBUG = "TRUE" *) wire receive;
 
 
 reg [7:0] counter;
@@ -100,7 +100,7 @@ always @(posedge clk) begin
 					end
 				end 
 				(1 << TURNAROUND): begin
-					if (counter == 1) begin
+					if (counter == 0) begin // Turnaround time is now 1 clk cycle
 						state <= 1 << DATA;
 						counter <= 0;
 					end else begin
