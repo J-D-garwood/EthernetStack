@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.sim/sim_1/behav/xsim/glbl.v,1756381829,verilog,,,,glbl,,,,,,,,
+C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sim_1/imports/testbenches/MDIO_read_write_tb.v,1790990262,verilog,,,,MDIO_tb,,,../../../../../../../../../AMDDesignTools/2025.2/Vivado/data/rsb/busdef;../../../../EthernetStack.ip_user_files/ipstatic,,,,,
+C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/MDIO.v,1790990619,verilog,,C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/synchroniser.v,,MDIO,,,../../../../../../../../../AMDDesignTools/2025.2/Vivado/data/rsb/busdef;../../../../EthernetStack.ip_user_files/ipstatic,,,,,
+C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/synchroniser.v,1788886389,verilog,,C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/tristate.v,,synchroniser,,,../../../../../../../../../AMDDesignTools/2025.2/Vivado/data/rsb/busdef;../../../../EthernetStack.ip_user_files/ipstatic,,,,,
+C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/tristate.v,1788433880,verilog,,C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sim_1/imports/testbenches/MDIO_read_write_tb.v,,tristate,,,../../../../../../../../../AMDDesignTools/2025.2/Vivado/data/rsb/busdef;../../../../EthernetStack.ip_user_files/ipstatic,,,,,

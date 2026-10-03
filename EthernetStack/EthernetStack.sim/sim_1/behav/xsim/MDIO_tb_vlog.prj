@@ -1,0 +1,12 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../../../AMDDesignTools/2025.2/Vivado/data/rsb/busdef" --include "../../../../EthernetStack.ip_user_files/ipstatic" \
+"../../../../EthernetStack.srcs/sources_1/imports/src/MDIO.v" \
+"../../../../EthernetStack.srcs/sources_1/imports/src/synchroniser.v" \
+"../../../../EthernetStack.srcs/sources_1/imports/src/tristate.v" \
+"../../../../EthernetStack.srcs/sim_1/imports/testbenches/MDIO_read_write_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

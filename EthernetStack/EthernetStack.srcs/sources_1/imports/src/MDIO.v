@@ -1,5 +1,4 @@
-// 3rd iteration - Only reads at the moment
-// NEXT STEP FIGURE OUT WHERE SYNCHRONISATION COMES INTO PLAY...
+
 module MDIO #()(
 	input init,
     input rst_n,
@@ -21,6 +20,8 @@ reg en;
 
 
 reg [7:0] counter;
+
+reg read;
 
 reg [63:0] ins;
 assign transmit = ins[63];
@@ -78,6 +79,7 @@ always @(posedge clk) begin
 						busy <= 1;
 						en <= 1;
 						ins <= {32'hFFFF_FFFF, transmitting};
+						read <= transmitting[29];
 					end
 				end
 				(1 << PREAMBLE): begin
@@ -92,14 +94,15 @@ always @(posedge clk) begin
 				(1 << HEADER): begin
 					ins <= {ins[62:0], 1'b1};
 					if (counter == 13) begin
-						en <= 0;
+						if (read) begin en <= 0; end
 						state <= 1 << TURNAROUND;
 						counter <=0;
 					end else begin
 						counter <= counter + 1;
 					end
 				end 
-				(1 << TURNAROUND): begin
+				(1 << TURNAROUND): begin 
+					if (!read) begin ins <= {ins[62:0], 1'b1}; end
 					if (counter == 0) begin // Turnaround time is now 1 clk cycle
 						state <= 1 << DATA;
 						counter <= 0;
@@ -108,21 +111,23 @@ always @(posedge clk) begin
 					end
 				end
 				(1 << DATA): begin
-					buffer <= {buffer[14:0], receive};
+					if (read) begin buffer <= {buffer[14:0], receive}; end
+					else begin ins <= {ins[62:0], 1'b1}; end
 					if (counter == 15) begin
 						state <= 1 << DONE;
 						counter <= 0;
 						done <= 1'b1;
 						busy <= 1'b0;
+						if (read) begin received <= {buffer[14:0], receive}; end
 					end else begin
 						counter <= counter + 1;
 					end
 				end 
 				(1 << DONE): begin 
-					received <= buffer;
 					done <= 0;
 					counter <= 0;
 					state <= 1 << IDLE;
+					en <= 0;
 				end
 				default: state <= 1 << IDLE;
 			endcase

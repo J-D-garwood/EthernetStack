@@ -1,3 +1,4 @@
+# 1.1.
 ## 16/08/2026
 Deciding key params for implementation (implemented on a AX7A035B Development board w. xc7a35tfgg484-2)
 - **FPGA board**: XC7A35T
@@ -87,4 +88,8 @@ PHY_reset.v
 - Reduced turnaround time by one clock cycle, issue resolved.
 ![alt text](image-2.png)
 
+# 1.2
 ## 03/10/2026
+- Confirmed 1.1. (PHY reg reads) complete
+- Modified MDIO to now permit reg writes
+- Generated tb using claude, confirmed all tests passed
