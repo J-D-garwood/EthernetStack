@@ -1,4 +1,4 @@
-# 1.1.
+# 1.1. PHY review and PHY Register Reads
 ## 16/08/2026
 Deciding key params for implementation (implemented on a AX7A035B Development board w. xc7a35tfgg484-2)
 - **FPGA board**: XC7A35T
@@ -88,8 +88,20 @@ PHY_reset.v
 - Reduced turnaround time by one clock cycle, issue resolved.
 ![alt text](image-2.png)
 
-# 1.2
+# 1.2. PHY Register Writes
 ## 03/10/2026
 - Confirmed 1.1. (PHY reg reads) complete
 - Modified MDIO to now permit reg writes
 - Generated tb using claude, confirmed all tests passed
+- Modified MDIO master to write to control reg 0, seting Ethernet Speed to 100 Mbps. Confirmed with following screenshots on Vivado and PC
+
+![alt text](image-5.png)
+![alt text](image-3.png)
+- Set eth adapter to 100 Mbps (full duplex)
+
+![alt text](image-4.png)
+
+- Started work on RGMII receiving using DDR registers
+
+## 04/10/2026
+- Understand BUFG and its role in RGMII interface

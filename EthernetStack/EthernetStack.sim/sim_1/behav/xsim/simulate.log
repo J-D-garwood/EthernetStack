@@ -1,1 +1,12 @@
 Time resolution is 1 ps
+PASS read  reg 2: 1234
+PASS read  reg 3: 8001
+PASS write reg 16: a5a5
+PASS read  reg 16: a5a5
+PASS write reg 16: 8001
+PASS read  reg 16: 8001
+PASS write reg 17: 5a5a
+PASS read  reg 17: 5a5a
+PASS read  reg 16: 8001
+ALL TESTS PASSED
+$finish called at time : 234005 ns : File "C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sim_1/imports/testbenches/MDIO_read_write_tb.v" Line 282

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7a35tfgg484-2" LaunchTime="1790986183">
+<GenRun Id="impl_1" LaunchPart="xc7a35tfgg484-2" LaunchTime="1790993561">
   <File Type="PA-TCL" Name="top.tcl"/>
   <File Type="REPORTS-TCL" Name="top_reports.tcl"/>
   <File Type="INIT-TIMING" Name="top_timing_summary_init.rpt"/>
@@ -127,7 +127,7 @@
     <File Path="$PSRCDIR/sources_1/imports/src/MDIO.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../src/MDIO.v"/>
-        <Attr Name="ImportTime" Val="1789051010"/>
+        <Attr Name="ImportTime" Val="1790990619"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -136,7 +136,7 @@
     <File Path="$PSRCDIR/sources_1/imports/src/MDIO_master.v">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../src/MDIO_master.v"/>
-        <Attr Name="ImportTime" Val="1788886788"/>
+        <Attr Name="ImportTime" Val="1790993502"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
