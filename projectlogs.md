@@ -104,4 +104,4 @@ PHY_reset.v
 - Started work on RGMII receiving using DDR registers
 
 ## 04/10/2026
-- Understand BUFG and its role in RGMII interface
+- Added BUFG to RGMII receiver

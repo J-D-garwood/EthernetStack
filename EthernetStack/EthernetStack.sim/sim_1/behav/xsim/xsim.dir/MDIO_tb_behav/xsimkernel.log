@@ -2,3 +2,6 @@ Running: xsim.dir/MDIO_tb_behav/xsimk.exe -simmode gui -wdb MDIO_tb_behav.wdb -s
 Design successfully loaded
 Design Loading Memory Usage: 10996 KB (Peak: 10996 KB)
 Design Loading CPU Usage: 61 ms
+Simulation completed
+Simulation Memory Usage: 14068 KB (Peak: 14068 KB)
+Simulation CPU Usage: 108 ms

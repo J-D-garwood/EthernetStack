@@ -45,7 +45,7 @@ tristate tristate(
 	.pin(MDIO)
 );
 
-synchroniser receive_sync(
+synchroniser #() receive_sync(
 	.clk(clk),
 	.rst_n(rst_n),
 	.async_in(receive_async),
