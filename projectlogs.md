@@ -86,3 +86,5 @@ PHY_reset.v
 - i.e. 0x7949 << 1, with a 1 shifted in  =  0xF293
 - Reduced turnaround time by one clock cycle, issue resolved.
 ![alt text](image-2.png)
+
+## 03/10/2026
