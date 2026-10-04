@@ -1,3 +1,4 @@
+# no longer in use - used previously to compile testbenches
 TB     = MDC_tb
 TB_DIR = testbenches
 SRC    = $(wildcard src/MDC.v)
