@@ -115,3 +115,8 @@ PHY_reset.v
 - Wrote write pointer handler
 - Created top level RGMII
 - Added to top level module for raw nibble review
+- Confirmed nibbles received in Vivado ila after synthesis and implementation. See ila waveform capture below of Vivado hardware detection. 
+
+![alt text](image-7.png)
+
+## 05/10/2026
