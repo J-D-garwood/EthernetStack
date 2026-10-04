@@ -106,5 +106,12 @@ PHY_reset.v
 ## 04/10/2026
 - Added BUFG to RGMII receiver
 - Researched Async FIFOs for inter CD data transfer
+
+![alt text](image-6.png)
+
+
 - Created FIFO memory
-- Began write pointer handler
+- Wrote write pointer handler
+- Wrote write pointer handler
+- Created top level RGMII
+- Added to top level module for raw nibble review

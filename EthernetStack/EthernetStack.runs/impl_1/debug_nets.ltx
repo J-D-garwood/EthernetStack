@@ -31,50 +31,8 @@
                                 "direction": "IN",
                                 "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 5,
-                                "portIndex": 0,
-                                "nets": [
-                                    {
-                                        "name": "MDIO_master/mdio/state",
-                                        "isBus": true,
-                                        "subnets": [
-                                            {
-                                                "name": "MDIO_master/mdio/state[5]",
-                                                "parentNetId": 0
-                                            },
-                                            {
-                                                "name": "MDIO_master/mdio/state[4]",
-                                                "parentNetId": 1
-                                            },
-                                            {
-                                                "name": "MDIO_master/mdio/state[3]",
-                                                "parentNetId": 2
-                                            },
-                                            {
-                                                "name": "MDIO_master/mdio/state[2]",
-                                                "parentNetId": 3
-                                            },
-                                            {
-                                                "name": "MDIO_master/mdio/state[1]",
-                                                "parentNetId": 4
-                                            },
-                                            {
-                                                "name": "MDIO_master/mdio/state[0]",
-                                                "parentNetId": 5
-                                            }
-                                        ]
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "probe1",
-                                "id": 1,
-                                "type": "DATA_TRIGGER",
-                                "direction": "IN",
-                                "isVector": true,
-                                "leftIndex": 0,
                                 "rightIndex": 15,
-                                "portIndex": 1,
+                                "portIndex": 0,
                                 "nets": [
                                     {
                                         "name": "MDIO_master/mdio/received",
@@ -133,46 +91,153 @@
                                 ]
                             },
                             {
+                                "name": "probe1",
+                                "id": 1,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": true,
+                                "leftIndex": 0,
+                                "rightIndex": 5,
+                                "portIndex": 1,
+                                "nets": [
+                                    {
+                                        "name": "MDIO_master/mdio/state",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "MDIO_master/mdio/state[5]",
+                                                "parentNetId": 16
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[4]",
+                                                "parentNetId": 17
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[3]",
+                                                "parentNetId": 18
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[2]",
+                                                "parentNetId": 19
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[1]",
+                                                "parentNetId": 20
+                                            },
+                                            {
+                                                "name": "MDIO_master/mdio/state[0]",
+                                                "parentNetId": 21
+                                            }
+                                        ]
+                                    }
+                                ]
+                            },
+                            {
                                 "name": "probe2",
                                 "id": 2,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
-                                "isVector": false,
+                                "isVector": true,
                                 "leftIndex": 0,
-                                "rightIndex": 0,
+                                "rightIndex": 3,
                                 "portIndex": 2,
                                 "nets": [
                                     {
-                                        "name": "MDIO_master/mdio/done",
-                                        "isBus": false
+                                        "name": "data",
+                                        "isBus": true,
+                                        "subnets": [
+                                            {
+                                                "name": "data[3]"
+                                            },
+                                            {
+                                                "name": "data[2]"
+                                            },
+                                            {
+                                                "name": "data[1]"
+                                            },
+                                            {
+                                                "name": "data[0]"
+                                            }
+                                        ]
                                     }
                                 ]
-                            }
-                        ]
-                    },
-                    {
-                        "type": "ILA_V3",
-                        "name": "u_ila_1",
-                        "spec": "labtools_ila_v6",
-                        "core_location": {
-                            "user_chain": 1,
-                            "slave_index": 1,
-                            "bscan_switch_index": 0
-                        },
-                        "uuid": "3B505A030738513C98471D25F5B1F848",
-                        "pins": [
+                            },
                             {
-                                "name": "probe0",
+                                "name": "probe3",
                                 "id": 3,
                                 "type": "DATA_TRIGGER",
                                 "direction": "IN",
                                 "isVector": false,
                                 "leftIndex": 0,
                                 "rightIndex": 0,
-                                "portIndex": 0,
+                                "portIndex": 3,
                                 "nets": [
                                     {
-                                        "name": "locked",
+                                        "name": "data_valid",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe4",
+                                "id": 4,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 4,
+                                "nets": [
+                                    {
+                                        "name": "MDIO_master/mdio/done",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe5",
+                                "id": 5,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 5,
+                                "nets": [
+                                    {
+                                        "name": "MDIO_master/mdio/receive",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe6",
+                                "id": 6,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 6,
+                                "nets": [
+                                    {
+                                        "name": "MDIO_master/mdio/receive_async",
+                                        "isBus": false
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "probe7",
+                                "id": 7,
+                                "type": "DATA_TRIGGER",
+                                "direction": "IN",
+                                "isVector": false,
+                                "leftIndex": 0,
+                                "rightIndex": 0,
+                                "portIndex": 7,
+                                "nets": [
+                                    {
+                                        "name": "MDIO_master/mdio/transmit",
                                         "isBus": false
                                     }
                                 ]
@@ -182,7 +247,7 @@
                 ],
                 "parent_nets": [
                     {
-                        "id": 0,
+                        "id": 16,
                         "name": "MDIO_master/mdio/state[5]",
                         "state_reg": [
                             {
@@ -217,7 +282,7 @@
                         ]
                     },
                     {
-                        "id": 1,
+                        "id": 17,
                         "name": "MDIO_master/mdio/state[4]",
                         "state_reg": [
                             {
@@ -252,7 +317,7 @@
                         ]
                     },
                     {
-                        "id": 2,
+                        "id": 18,
                         "name": "MDIO_master/mdio/state[3]",
                         "state_reg": [
                             {
@@ -287,7 +352,7 @@
                         ]
                     },
                     {
-                        "id": 3,
+                        "id": 19,
                         "name": "MDIO_master/mdio/state[2]",
                         "state_reg": [
                             {
@@ -322,7 +387,7 @@
                         ]
                     },
                     {
-                        "id": 4,
+                        "id": 20,
                         "name": "MDIO_master/mdio/state[1]",
                         "state_reg": [
                             {
@@ -357,7 +422,7 @@
                         ]
                     },
                     {
-                        "id": 5,
+                        "id": 21,
                         "name": "MDIO_master/mdio/state[0]",
                         "state_reg": [
                             {

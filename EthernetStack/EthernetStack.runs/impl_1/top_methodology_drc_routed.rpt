@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
-| Date         : Sat Oct  3 12:14:03 2026
+| Date         : Sun Oct  4 16:28:40 2026
 | Host         : LAPTOP-PW0NGYLL running 64-bit major release  (build 9200)
 | Command      : report_methodology -file top_methodology_drc_routed.rpt -pb top_methodology_drc_routed.pb -rpx top_methodology_drc_routed.rpx
 | Design       : top
@@ -20,19 +20,19 @@ Table of Contents
 1. REPORT SUMMARY
 -----------------
             Netlist: netlist
-          Floorplan: design_1
+          Floorplan: checkpoint_top
       Design limits: <entire design considered>
              Max checks: <unlimited>
-             Checks found: 11
-+----------+----------+--------------------------------------------------------+--------+
-| Rule     | Severity | Description                                            | Checks |
-+----------+----------+--------------------------------------------------------+--------+
-| LUTAR-1  | Warning  | LUT drives async reset alert                           | 4      |
-| TIMING-9 | Warning  | Unknown CDC Logic                                      | 1      |
-| XDCB-5   | Warning  | Runtime inefficient way to find pin objects            | 4      |
-| XDCC-1   | Warning  | Scoped Clock constraint overwritten with the same name | 1      |
-| XDCC-7   | Warning  | Scoped Clock constraint overwritten on the same source | 1      |
-+----------+----------+--------------------------------------------------------+--------+
+             Checks found: 15
++-----------+----------+--------------------------------------------------------+--------+
+| Rule      | Severity | Description                                            | Checks |
++-----------+----------+--------------------------------------------------------+--------+
+| LUTAR-1   | Warning  | LUT drives async reset alert                           | 5      |
+| TIMING-18 | Warning  | Missing input or output delay                          | 6      |
+| XDCB-5    | Warning  | Runtime inefficient way to find pin objects            | 2      |
+| XDCC-1    | Warning  | Scoped Clock constraint overwritten with the same name | 1      |
+| XDCC-7    | Warning  | Scoped Clock constraint overwritten on the same source | 1      |
++-----------+----------+--------------------------------------------------------+--------+
 
 2. REPORT DETAILS
 -----------------
@@ -64,47 +64,66 @@ dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/
 dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_5_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/ngwrdrst.grst.g7serrst.wr_rst_reg_reg[2]/PRE. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
 Related violations: <none>
 
-TIMING-9#1 Warning
-Unknown CDC Logic  
-One or more asynchronous Clock Domain Crossing has been detected between 2 clock domains through a set_false_path or a set_clock_groups or set_max_delay -datapath_only constraint but no double-registers logic synchronizer has been found on the side of the capture clock. It is recommended to run report_cdc for a complete and detailed CDC coverage. Please consider using XPM_CDC to avoid Critical severities
+LUTAR-1#5 Warning
+LUT drives async reset alert  
+LUT cell phy_init/mdio_i_1, with 2 or more inputs, drives asynchronous preset/clear pin(s) MDIO_master/mdio/receive_sync/Ds_reg[0]/CLR
+MDIO_master/mdio/receive_sync/sync_out_reg[0]/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on RXD[0] relative to the rising and/or falling clock edge(s) of rxc.
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on RXD[1] relative to the rising and/or falling clock edge(s) of rxc.
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on RXD[2] relative to the rising and/or falling clock edge(s) of rxc.
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on RXD[3] relative to the rising and/or falling clock edge(s) of rxc.
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on RX_CTL relative to the rising and/or falling clock edge(s) of rxc.
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An input delay is missing on rst_n relative to the rising and/or falling clock edge(s) of rxc.
 Related violations: <none>
 
 XDCB-5#1 Warning
 Runtime inefficient way to find pin objects  
-The option '-from : [get_pins -hierarchical -filter {NAME =~ *ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[*].U_TC/allx_typeA_match_detection.ltlib_v1_0_3_allx_typeA_inst/DUT/u_srl_drive/CLK}]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '42' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
-Current XDC: c:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.runs/impl_1/.Xil/Vivado-3336-LAPTOP-PW0NGYLL/u_ila_0_CV.0/out/ila_early.xdc (Line: 72)
+The option '-from : [get_pins -hierarchical -filter {NAME =~ *ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[*].U_TC/allx_typeA_match_detection.ltlib_v1_0_3_allx_typeA_inst/DUT/u_srl_drive/CLK}]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '44' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: c:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.runs/impl_1/.Xil/Vivado-29524-LAPTOP-PW0NGYLL/u_ila_0_CV.0/out/ila_early.xdc (Line: 72)
 Related violations: <none>
 
 XDCB-5#2 Warning
 Runtime inefficient way to find pin objects  
-The option '-from : [get_pins -hierarchical -filter {NAME =~ *ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[*].U_TC/allx_typeA_match_detection.ltlib_v1_0_3_allx_typeA_inst/DUT/u_srl_drive/CLK}]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '97' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
-Current XDC: c:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.runs/impl_1/.Xil/Vivado-3336-LAPTOP-PW0NGYLL/u_ila_1_CV.0/out/ila_early.xdc (Line: 72)
-Related violations: <none>
-
-XDCB-5#3 Warning
-Runtime inefficient way to find pin objects  
-The option '-to : [get_pins -hierarchical -filter {NAME =~ *ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[*].U_TC/yes_output_reg.dout_reg_reg/D}]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '42' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
-Current XDC: c:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.runs/impl_1/.Xil/Vivado-3336-LAPTOP-PW0NGYLL/u_ila_0_CV.0/out/ila_early.xdc (Line: 72)
-Related violations: <none>
-
-XDCB-5#4 Warning
-Runtime inefficient way to find pin objects  
-The option '-to : [get_pins -hierarchical -filter {NAME =~ *ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[*].U_TC/yes_output_reg.dout_reg_reg/D}]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '97' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
-Current XDC: c:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.runs/impl_1/.Xil/Vivado-3336-LAPTOP-PW0NGYLL/u_ila_1_CV.0/out/ila_early.xdc (Line: 72)
+The option '-to : [get_pins -hierarchical -filter {NAME =~ *ila_core_inst/u_trig/N_DDR_TC.N_DDR_TC_INST[*].U_TC/yes_output_reg.dout_reg_reg/D}]' of constraint 'set_false_path' uses inefficient query to find pin objects (see constraint position '44' in the Timing Constraint window in Vivado IDE). To reduce runtime, it is recommended to get the pins through the cell objects. Please refer to Using Constraints Guide (Constraints Efficiency). An example of optimal query is: get_pins -filter {REF_PIN_NAME=~yy*} -of_objects [get_cells -hierarchical xx*].
+Current XDC: c:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.runs/impl_1/.Xil/Vivado-29524-LAPTOP-PW0NGYLL/u_ila_0_CV.0/out/ila_early.xdc (Line: 72)
 Related violations: <none>
 
 XDCC-1#1 Warning
 Scoped Clock constraint overwritten with the same name  
 A new clock constraint create_clock overrides a previous scoped clock constraint with the same name. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
 New: create_clock -period 5.000 [get_ports sys_clk_p] (Source: C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/constrs_1/imports/constraints/constraints.xdc (Line: 9))
-Previous: create_clock -period 5.000 [get_ports sys_clk_p] (Source: c:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc (Line: 53))
+Previous: create_clock -period 5.000 [get_ports sys_clk_p] (Source: C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc (Line: 53))
 Related violations: <none>
 
 XDCC-7#1 Warning
 Scoped Clock constraint overwritten on the same source  
 A new clock constraint create_clock overrides a previous scoped clock constraint defined on the same source. It is not recommended to override a scoped (typically an IP) clock constraint and could result in unexpected behaviors.
 New: create_clock -period 5.000 [get_ports sys_clk_p] (Source: C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/constrs_1/imports/constraints/constraints.xdc (Line: 9))
-Previous: create_clock -period 5.000 [get_ports sys_clk_p] (Source: c:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc (Line: 53))
+Previous: create_clock -period 5.000 [get_ports sys_clk_p] (Source: C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.gen/sources_1/ip/clk_wiz_0/clk_wiz_0.xdc (Line: 53))
 Related violations: <none>
 
 

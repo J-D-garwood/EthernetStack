@@ -56,10 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param tcl.collectionResultDisplayLimit 0
 set_param general.usePosixSpawnForFork 1
-set_param chipscope.maxJobs 4
-set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tfgg484-2
 
@@ -77,12 +74,19 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
+  {C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/async FIFO/FIFO.v}
+  {C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/async FIFO/FIFO_memory.v}
   C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/MDC.v
   C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/MDIO.v
   C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/MDIO_master.v
   C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/PHY_INIT.v
+  C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/RGMII_receiver.v
+  C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/RGMII_top.v
+  {C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/async FIFO/gray_to_bin.v}
+  {C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/async FIFO/r_ptr_handler.v}
   C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/synchroniser.v
   C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/tristate.v
+  {C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/async FIFO/w_ptr_handler.v}
   C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/imports/src/top.v
 }
 read_ip -quiet C:/Users/garwo/Dev/EthernetStack/EthernetStack/EthernetStack.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci

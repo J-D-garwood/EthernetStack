@@ -1,8 +1,8 @@
 -------------------------------------
 | Tool Version : Vivado v.2025.2
-| Date         : Sat Oct  3 12:13:38 2026
+| Date         : Sun Oct  4 16:28:16 2026
 | Host         : LAPTOP-PW0NGYLL
-| Design       : design_1
+| Design       : checkpoint_top
 | Device       : xc7a35t-fgg484-2--
 -------------------------------------
 
