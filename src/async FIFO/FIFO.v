@@ -1,3 +1,7 @@
+// HDL modelled after the following FIFOs 
+// --> https://github.com/ujjwal-2001/Async_FIFO_Design/blob/main/Verilog_Code/FIFO.v
+// --> https://vlsiverify.com/verilog/verilog-codes/asynchronous-fifo/
+
 module FIFO #(
     parameter width = 4,
     parameter addr_bits = 4 //16 mem addresses

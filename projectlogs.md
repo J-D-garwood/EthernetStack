@@ -120,3 +120,4 @@ PHY_reset.v
 ![alt text](image-7.png)
 
 ## 05/10/2026
+- Extract full bytes and complete frame receiver. 

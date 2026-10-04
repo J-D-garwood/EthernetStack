@@ -23,15 +23,16 @@ module top (
     wire locked;
     wire PHY_init_complete;
 
+    wire sync_rst_n;
     wire rst_n_phy;
     assign rst_n_phy = (rst_n && locked); // reset finished and clock confirmed at 25 MHz
 
     wire rst_n_mdio;
-    assign rst_n_mdio = (rst_n_phy && PHY_init_complete);
+    assign rst_n_mdio = (sync_rst_n && PHY_init_complete);
 
-    localparam width = 4;
+    localparam width = 8;
     (* MARK_DEBUG = "TRUE" *) wire [width-1:0] data;
-    (* MARK_DEBUG = "TRUE" *) wire data_valid;
+    (* MARK_DEBUG = "TRUE" *) wire byte_valid;
 
       clk_wiz_0 clk_wiz
        (
@@ -48,7 +49,7 @@ module top (
 // PHY INIT SHOULD ALWAY PRECEDE MDIO HANDSHAKE!! --> Fix this next time
     PHY_INIT #() phy_init(
         .clk(clk),
-        .rst_n(rst_n_phy),
+        .rst_n(sync_rst_n),
         .PHY_rst_n(PHY_rst_n),
         .init_complete(PHY_init_complete)
     );
@@ -60,14 +61,22 @@ module top (
         .MDC(MDC)
     );
 
+    
+    synchroniser #(1) sync_rst(
+        .clk(clk),
+    	.rst_n(rst_n_phy),
+    	.async_in(1'b1),
+    	.sync_out(sync_rst_n)
+    );
+
     RGMII_top #() rgmii(
     .clk(clk),
-    .rst_n(rst_n),
+    .rst_n(sync_rst_n),
     .RXC(RXC),
     .RXD(RXD),
     .RX_CTL(RX_CTL),
     .data(data),
-    .valid(data_valid)
+    .byte_valid(byte_valid)
     );
 
 
