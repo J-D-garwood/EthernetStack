@@ -6,10 +6,19 @@ module top (
     input  sys_clk_p,
     input  sys_clk_n,
     input  rst_n,
+    // RGMII INTERFACE
+    input RXC,
+    input RX_CTL,
+    input [3:0] RXD,
+
+    // MDIO INTERFACE
     inout MDIO,
     output MDC,
+
+    //OTHER PHY PINS
     output PHY_rst_n
 );
+
     wire clk;
     wire locked;
     wire PHY_init_complete;
@@ -19,10 +28,10 @@ module top (
 
     wire rst_n_mdio;
     assign rst_n_mdio = (rst_n_phy && PHY_init_complete);
-// Differential clk to single wire - WILL BE REMOVED AFTER PLL ADDED
-//    IBUFDS #(.IOSTANDARD("DIFF_SSTL15")) u_clk_buf (
-//        .I (sys_clk_p), .IB (sys_clk_n), .O (clk)
-//    );
+
+    localparam width = 4;
+    (* MARK_DEBUG = "TRUE" *) wire [width-1:0] data;
+    (* MARK_DEBUG = "TRUE" *) wire data_valid;
 
       clk_wiz_0 clk_wiz
        (
@@ -50,5 +59,16 @@ module top (
         .MDIO(MDIO),
         .MDC(MDC)
     );
+
+    RGMII_top #() rgmii(
+    .clk(clk),
+    .rst_n(rst_n),
+    .RXC(RXC),
+    .RXD(RXD),
+    .RX_CTL(RX_CTL),
+    .data(data),
+    .valid(data_valid)
+    );
+
 
 endmodule

@@ -8,7 +8,7 @@ module synchroniser #(parameter SIZE = 1) (
 );
 	(* ASYNC_REG = "TRUE" *) reg [SIZE-1:0] Ds;
 
-always @(posedge clk) begin
+always @(posedge clk or negedge rst_n) begin
 	if (!rst_n) begin
 		Ds <= 1'b0;
 		sync_out<= 1'b0;
