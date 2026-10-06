@@ -123,3 +123,6 @@ PHY_reset.v
 - Extracted full bytes
 - Began work on frame error handling and frame receiver. 
 - Researched CRC
+
+## 06/10/2026
+- Researched CRC...
