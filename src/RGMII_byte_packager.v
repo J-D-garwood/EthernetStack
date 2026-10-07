@@ -20,8 +20,11 @@ module RGMII_byte_packager #(
 
 wire DV; // Data valid
 reg DV_Q; // --> delayed by 1 PHY clk cycle
+reg DV_Q2; // --> delayed by 2 PHY clk cycle
 wire ER; // Error in nibble/byte
 reg ER_Q; // --> delayed by 1 PHY clk cycle
+reg ER_Q2; // --> delayed by 1 PHY clk cycle
+
 
 wire RXC_b; // buffered PHY clk
 
@@ -31,10 +34,14 @@ wire r_en; //enable FIFO reads if...
 assign r_en = !(empty); // .. FIFO is not empty
 wire [3:0] wdata; //nibble written to fifo by RGMII
 reg [3:0] wdata_Q; //--> delayed by 1 PHY clk cycle
+reg [3:0] wdata_Q2; //--> delayed by 2 PHY clk cycle
 wire [5:0] rdata; // read nibble data and metadata (edge of frame or detected err.)
-reg nibble_edge; // reg stores whether nibble is edge of frame
+wire nibble_edge; // wire stores whether nibble is edge of frame
+assign nibble_edge = (DV_Q2 != DV_Q);
+reg nibble_edge_Q; // --> delayed by 1 clk cycle
 wire RXC_rst_n; //Reset PHY clk domain 
 wire valid; // wire if FIFO read returns valid
+reg [5:0] FIFO_package;
 
 reg frame; //reg which indicates whether we are currently in frame
 
@@ -66,9 +73,9 @@ FIFO #(6, fifo_addr_bits) receiver_fifo(
     .rclk(clk), 
     .wclk(RXC_b), 
     .r_en(r_en), 
-    .w_en(DV_Q),
+    .w_en(DV_Q2),
     .rst_n(rst_n),
-    .wdata({nibble_edge, ER_Q, wdata_Q}),
+    .wdata({(nibble_edge), (ER_Q2), (wdata_Q2)}),
     .rdata(rdata),
     .full(full),
     .empty(empty),
@@ -85,14 +92,18 @@ synchroniser #(1) sync_rst_RXC(
 always @(posedge RXC_b) begin
     if (!RXC_rst_n) begin
         DV_Q <= 1'b0;
-        nibble_edge <= 1'b0;
+        DV_Q2 <= 1'b0;
         wdata_Q <= 4'b0000;
+        wdata_Q2 <= 4'b0000;
         ER_Q <= 1'b0;
+        ER_Q2 <= 1'b0;
     end else begin
-        nibble_edge <= (DV!=DV_Q);
         DV_Q <= DV;
+        DV_Q2 <= DV_Q;
         wdata_Q <= wdata;
+        wdata_Q2 <= wdata_Q;
         ER_Q <= ER;
+        ER_Q2 <= ER_Q;  
     end
 end
 
@@ -107,7 +118,9 @@ always @(posedge clk) begin
         first_byte <= 1'b0;
     end else begin
         if (!byte_aligned && valid) begin
+            frame_error <= 1'b0;
             prev_nibble <= nibble;
+            byte_valid <= 1'b0;
             if ({nibble, prev_nibble} == 8'hD5) begin
                 byte_aligned <= 1'b1;
                 byte_idx <= 1'b0;
@@ -136,7 +149,7 @@ always @(posedge clk) begin
             endcase
             if (valid) begin 
                 byte_aligned <= (edge_nibble) ? 1'b0 : 1'b1;
-                frame_error <= (edge_nibble) ? 1'b0 : (frame_error||nibble_error);
+                frame_error <= frame_error||nibble_error;
             end
         end
     end
