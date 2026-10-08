@@ -1,6 +1,5 @@
 // PERSISTENT ERRS
-// - frame_error clears on the same cycle the last byte comes out.
-// - The end-of-frame edge marker never gets written into the FIFO.
+// - Actually figure out what you did
 
 module RGMII_byte_packager #(
     parameter WIDTH = 8,
@@ -14,7 +13,7 @@ module RGMII_byte_packager #(
     input RX_CTL,
     output reg [(WIDTH-1):0] data,
     output reg byte_is_edge, //flag that indicates if byte is at the edge of a frame
-    output reg frame_error, //flage that indicates if an error has been detected this frame
+    output reg frame_error, //flag that indicates if an error has been detected this frame
     output reg byte_valid
 );
 
@@ -37,7 +36,7 @@ reg [3:0] wdata_Q; //--> delayed by 1 PHY clk cycle
 reg [3:0] wdata_Q2; //--> delayed by 2 PHY clk cycle
 wire [5:0] rdata; // read nibble data and metadata (edge of frame or detected err.)
 wire nibble_edge; // wire stores whether nibble is edge of frame
-assign nibble_edge = (DV_Q2 != DV_Q);
+assign nibble_edge = (DV != DV_Q);
 reg nibble_edge_Q; // --> delayed by 1 clk cycle
 wire RXC_rst_n; //Reset PHY clk domain 
 wire valid; // wire if FIFO read returns valid
@@ -73,9 +72,9 @@ FIFO #(6, fifo_addr_bits) receiver_fifo(
     .rclk(clk), 
     .wclk(RXC_b), 
     .r_en(r_en), 
-    .w_en(DV_Q2),
+    .w_en(DV_Q),
     .rst_n(rst_n),
-    .wdata({(nibble_edge), (ER_Q2), (wdata_Q2)}),
+    .wdata({(nibble_edge), (ER_Q), (wdata_Q)}),
     .rdata(rdata),
     .full(full),
     .empty(empty),
@@ -92,18 +91,12 @@ synchroniser #(1) sync_rst_RXC(
 always @(posedge RXC_b) begin
     if (!RXC_rst_n) begin
         DV_Q <= 1'b0;
-        DV_Q2 <= 1'b0;
         wdata_Q <= 4'b0000;
-        wdata_Q2 <= 4'b0000;
         ER_Q <= 1'b0;
-        ER_Q2 <= 1'b0;
     end else begin
         DV_Q <= DV;
-        DV_Q2 <= DV_Q;
         wdata_Q <= wdata;
-        wdata_Q2 <= wdata_Q;
         ER_Q <= ER;
-        ER_Q2 <= ER_Q;  
     end
 end
 

@@ -126,3 +126,11 @@ PHY_reset.v
 
 ## 06/10/2026
 - Researched CRC...
+
+## 07/10/2026
+- Reworked frame receiver into byte parser
+- Handled undetected end of frame bug - last edge not being written to FIFO due to the usage of a register over a wire in the FIFO write enable logic.
+
+## 08/10/2026
+- Researched CRC, how to implement it in digital logic
+- Streamlined byte parsing logic, reducing reg count
